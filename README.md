@@ -3,7 +3,7 @@
   <a href="http://www.juniormoraba.co.za"></a>
 </p>
 <h1 align="center">
-  Junior Moraba's Perosnl Website
+  Junior Moraba's Perosnal Website
 </h1>
 <h3>Website built using React, Gatsby, Material-UI, Formspree</h3>
 

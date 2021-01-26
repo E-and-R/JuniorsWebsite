@@ -16,6 +16,7 @@ import best from '../images/best.jpeg'
 import sebopa from '../images/sebopa.jpeg'
 import ContactForm from '../components/contactform'
 import HireForm from '../components/hireform'
+import SkillBars from '../components/skillBar'
 
 const useStyles = makeStyles(() => ({
     darkgridbackground:{
@@ -25,7 +26,8 @@ const useStyles = makeStyles(() => ({
         backgroundColor: 'white'
      },
 }));
-const skillbar = [
+
+const SKILLS = [
     {
       "type": "Java",
       "level": 90
@@ -71,13 +73,6 @@ const skillbar = [
         "level": 70
     },
   ];
-const colors = {
-    bar: '#626161',
-    title: {
-      text: '#000000',
-      background: '#ACACAC'
-    }
-}
 
 export default function HomeContent(){
     const classes = useStyles();
@@ -122,7 +117,7 @@ export default function HomeContent(){
                     </Hidden>
                     <br/><br/>
                     <Grid item xs={11} md={10} style={{margin:'0 auto'}}>
-                        
+                        <SkillBars skills={SKILLS} />,
                     </Grid>
                     
                 </Grid>
