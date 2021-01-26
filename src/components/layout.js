@@ -1,55 +1,70 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
+import React from 'react';
+import Lottie from 'lottie-react-web';
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import skills from '../animations/mySkillsComp.json'
+import hire from '../animations/hireComp.json'
 
-import Header from "./header"
-import "./layout.css"
+export default class LottieControl extends React.Component {
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+  constructor(props) {
+    super(props);
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
+    this.state = {
+      isStopped: false,
+      isPaused: false,
+      speed: 1,
+      direction: 1,
+      isDataA: true,
+    };
+  }
+
+  render() {
+    const centerStyle = {
+      display: 'block',
+      margin: '10px auto',
+      textAlign: 'center',
+    };
+    const { isStopped, isPaused, direction, speed, isDataA } = this.state;
+    const defaultOptions = { animationData: (isDataA ? skills : hire) };
+    const defaultOptions1 = { loop: false};
+
+    return (<div>
+      <Lottie
+        options={defaultOptions}
+        height={400}
+        width={400}
+        isStopped={isStopped}
+        isPaused={isPaused}
+        speed={speed}
+        direction={direction}
+      />
+
+      <p style={centerStyle}>Speed: x{speed}</p>
+      <input
+        style={centerStyle}
+        type="range" value={speed} min="0" max="3" step="0.5"
+        onChange={e => this.setState({ speed: e.currentTarget.value })}
+      />
+      <button
+        style={centerStyle}
+        onClick={() => this.setState({ isStopped: true })}
+      >stop</button>
+      <button
+        style={centerStyle}
+        onClick={() => this.setState({ isStopped: false })}
+      >play</button>
+      <button
+        style={centerStyle}
+        onClick={() => this.setState({ isPaused: !isPaused })}
+      >pause</button>
+      <button
+        style={centerStyle}
+        onClick={() => this.setState({ isDataA: hire })}
+      >change direction</button>
+      <button
+        style={centerStyle}
+        onClick={() => this.setState({ isDataA: skills })}
+      >toggle animation</button>
+    </div>);
+  }
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout

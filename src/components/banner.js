@@ -5,14 +5,15 @@ import BackgroundImage from "gatsby-background-image"
 import {graphql} from "gatsby"
 import Lottie from 'lottie-react-web';
 import welcomeLottie from '../animations/finalDraft.json'
-
+import BottomNav from '../components/bottomNav'
+import { AspectRatio } from "@material-ui/icons"
 
 const useStyles = makeStyles(() => ({
     masthead:{
         width: '100%',
-        height: '90vh',
+        height: '95vh',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: ' top',
         backgroundRepeat: 'no-repeat',
     },
     blackOverlayLottie:{
@@ -30,6 +31,7 @@ const useStyles = makeStyles(() => ({
         height: '100%',
         alignItems: 'center',
         color: 'white',
+        bottom:'-20px'
     },
     contentBox:{
         margin: '0 auto',
@@ -60,7 +62,7 @@ export default function Banner (){
                 }
                 largeScreen: file(relativePath: {eq: "serious2.jpg"}){
                     childImageSharp{
-                        fluid(maxWidth: 1800, quality: 100){
+                        fluid(maxWidth: 1200 quality: 100){
                             ...GatsbyImageSharpFluid
                         }
                     }
@@ -71,15 +73,18 @@ export default function Banner (){
     
     return (
         <Grid container>
-            <Hidden smDown>
+            <Hidden xsDown>
                 <Grid item xs={12} >
-                    <BackgroundImage fluid={data.largeScreen.childImageSharp.fluid} className={classes.masthead}>
+                    <BackgroundImage fluid={data.largeScreen.childImageSharp.fluid} className={classes.masthead} >
                             <div className={classes.blackOverlayLottie}>
                                 <div className={classes.contentBox}>
                                     <Lottie  options={defaultOptions} />
                                 </div>
                             </div>
-                       
+                            <div className={classes.blackOverlaytext}>                                
+                               
+                            </div>
+                            
                     </BackgroundImage>
                 </Grid>
             </Hidden>
@@ -89,6 +94,7 @@ export default function Banner (){
                     <BackgroundImage fluid={data.seriousImage.childImageSharp.fluid} className={classes.masthead}>
                         <div>
                             <Typography variant='h3' style={{position:'absolute',left:'50%',bottom:0,transform:'translate(-50%,0%)',msTransform:'translate(-50%,0%)',textAlign:'center',color:'white'}}>Hey I"m<br/>Junior Moraba</Typography>
+                            
                         </div>
                     </BackgroundImage>
                 </Grid>
