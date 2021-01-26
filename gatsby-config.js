@@ -1,7 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: `Junior Morba`,
+    titleTemplate:  "%s · Junior Moraba",
     description: `Personal website of Junior Moraba`,
+    url: "http://www.juniormoraba.co.za",
+    image: "/images/serious2.jpg",
     author: `@Junior_Moraba`,
   },
   plugins: [
