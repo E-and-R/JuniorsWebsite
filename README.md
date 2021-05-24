@@ -4,6 +4,6 @@
 </p>
 <h1 align="center">
   Junior Moraba's Personal Website
-  www.juniormoraba.co.za
 </h1>
+<h2>www.juniormoraba.co.za</h2>
 <h3>Website built using React, Gatsby, Material-UI, Formspree</h3>
